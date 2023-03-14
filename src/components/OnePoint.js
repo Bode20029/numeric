@@ -10,3 +10,5 @@ const FalseMethod = () => {
     const [Equation, setEquation] = useState([]);
     
 }
+
+export default FalseMethod;

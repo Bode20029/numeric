@@ -8,5 +8,7 @@ const FalseMethod = () => {
     const [valueXm, setValueXm] = useState([]);
     const [valueXr, setValueXr] = useState([]);
     const [Equation, setEquation] = useState([]);
-    
+
 }
+
+export default FalseMethod;
