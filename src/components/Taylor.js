@@ -62,7 +62,7 @@ const Taylor = () => {
     }
 
     return (
-        <div style={{ padding: "10px" }}>
+        <div style={{ padding: "20px" }}>
             <h4>Taylor series calculate</h4>
             <form id="taylor-input" onSubmit={(e) => { onSubmitHandler(e) }}>
                 <label for="fx">&nbsp; Enter f(x)</label>
