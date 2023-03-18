@@ -7,7 +7,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 
 
 
-const Navbarbode = () => {
+const Navbar = () => {
   return (
     <div className='container'>
     <div class="dropdown">
@@ -23,4 +23,4 @@ const Navbarbode = () => {
   )
 }
 
-export default Navbarbode
+export default Navbar
