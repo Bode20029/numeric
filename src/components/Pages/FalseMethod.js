@@ -1,5 +1,5 @@
 import { useState } from "react"
-import { Button, Container, Form, Table } from "react-bootstrap";
+import { Button, Container, Form, Table, Row } from "react-bootstrap";
 import { evaluate } from 'mathjs'
 
 const FalseMethod =()=>{
@@ -136,6 +136,11 @@ const FalseMethod =()=>{
 
     return (
             <Container>
+            <Row className="justify-content-center">
+            <div md="auto" className="text-center mb-4">
+                <h1>False Position Methods</h1>
+            </div>
+         </Row>
                 <Form >
                     <Form.Group className="mb-3">
                     <Form.Label>Input f(x)</Form.Label>

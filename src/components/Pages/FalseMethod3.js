@@ -2,7 +2,7 @@ import { useState } from "react"
 import { Button, Container, Form, Table, Row } from "react-bootstrap";
 import { evaluate } from 'mathjs'
 
-const Bisection =()=>{
+const FalseMethod3 =()=>{
     const print = () =>{
         console.log(data)
         setValueIter(data.map((x)=>x.iteration));
@@ -39,25 +39,33 @@ const Bisection =()=>{
 
     const error =(xold, xnew)=> Math.abs((xnew-xold)/xnew)*100;
    
-    const Calbisection = (xl, xr) => {
-        var xm,fXm,fXr,ea,scope;
+    const CalFalseMethod = (xl, xr) => {
+        var xm,fXm,fXr,fXl,ea,scope;
         var iter = 0;
         var MAX = 50;
         const e = 0.00001;
         var obj={};
         do
         {
-            xm = (xl+xr)/2.0;
+            
             scope = {
                 x:xr,
             }
             fXr = evaluate(Equation, scope)
 
+            
+
+            scope = {
+                x:xl,
+            }
+            fXl = evaluate(Equation, scope)
+            xm = ((xl*fXr)-(xr*fXl))/(fXr-fXl)
             scope = {
                 x:xm,
             }
-            fXm = evaluate(Equation, scope)
 
+            
+            fXm = evaluate(Equation, scope)
             iter ++;
             if (fXm*fXr > 0)
             {
@@ -118,7 +126,7 @@ const Bisection =()=>{
     const calculateRoot = () =>{
         const xlnum = parseFloat(XL)
         const xrnum = parseFloat(XR)
-        Calbisection(xlnum,xrnum);
+        CalFalseMethod(xlnum,xrnum);
      
         setHtml(print());
            
@@ -129,10 +137,10 @@ const Bisection =()=>{
     return (
             <Container>
             <Row className="justify-content-center">
-                    <div md="auto" className="text-center mb-4">
-                        <h1>Bisection Methods</h1>
-                    </div>
-                 </Row>
+            <div md="auto" className="text-center mb-4">
+                <h1>False Position Methods</h1>
+            </div>
+         </Row>
                 <Form >
                     <Form.Group className="mb-3">
                     <Form.Label>Input f(x)</Form.Label>
@@ -157,4 +165,4 @@ const Bisection =()=>{
     )
 }
 
-export default Bisection
+export default FalseMethod3

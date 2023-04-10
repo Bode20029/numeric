@@ -98,9 +98,12 @@ function BasicExample() {
           <Nav className="ms-auto">
             <NavDropdown title="Roots of equation" id="basic-nav-dropdown">
             <NavDropdown.Item href="/Bisection">Bisection</NavDropdown.Item>
-            <NavDropdown.Item href="/FalsePosition">False Position</NavDropdown.Item>
-            
+            <NavDropdown.Item href="/FalseMethod">False Position</NavDropdown.Item>
+            <NavDropdown.Item href="/FalseMethod2">False Positionเฉพาะกิจ</NavDropdown.Item>
+            <NavDropdown.Item href="/FalseMethod3">False Positionทำเพิ่ม</NavDropdown.Item>
             <NavDropdown.Item href="/Newton-raphson">Newton raphson</NavDropdown.Item>
+
+            
             
             <NavDropdown.Item href="/Taylor">Taylor_series </NavDropdown.Item>
             </NavDropdown>

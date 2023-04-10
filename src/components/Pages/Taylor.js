@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { parse, evaluate, pow, factorial, derivative, simplify, print } from 'mathjs'
-
+import { Button, Container, Form, Row } from "react-bootstrap";
 const Taylor = () => {
     const [f, setf] = useState();
     const [x0, setx0] = useState(0);
@@ -63,7 +63,11 @@ const Taylor = () => {
 
     return (
         <div style={{ padding: "20px" }}>
-            <h4>Taylor series calculate</h4>
+        <Row className="justify-content-center">
+        <div md="auto" className="text-center mb-4">
+            <h1>Taylor Series Calculate</h1>
+        </div>
+     </Row>
             <form id="taylor-input" onSubmit={(e) => { onSubmitHandler(e) }}>
                 <label for="fx">&nbsp; Enter f(x)</label>
                 <br />
