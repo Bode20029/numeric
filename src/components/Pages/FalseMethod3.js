@@ -1,14 +1,15 @@
-import { useState } from "react"
-import { Button, Container, Form, Table, Row } from "react-bootstrap";
+import { Input } from '@mui/material'
+import React from 'react'
+import { useState } from 'react'
+import { Button, Form, FormGroup, FormLabel, Row,Container,Table } from 'react-bootstrap'
 import { evaluate } from 'mathjs'
-
-const FalseMethod3 =()=>{
+const FalseMethod3 = () => {
     const print = () =>{
         console.log(data)
-        setValueIter(data.map((x)=>x.iteration));
-        setValueXl(data.map((x)=>x.Xl));
-        setValueXm(data.map((x)=>x.Xm));
-        setValueXr(data.map((x)=>x.Xr));
+        SetValueIter(data.map((x)=>x.iteration));
+        SetValueXL(data.map((x)=>x.XL));
+        SetValueXM(data.map((x)=>x.XM));
+        SetValueXR(data.map((x)=>x.XR));
         return(
             <Container>
                 <Table striped bordered hover variant="dark">
@@ -25,9 +26,9 @@ const FalseMethod3 =()=>{
                             return  (
                             <tr key={index}>
                                 <td>{element.iteration}</td>
-                                <td>{element.Xl}</td>
-                                <td>{element.Xm}</td>
-                                <td>{element.Xr}</td>
+                                <td>{element.XL}</td>
+                                <td>{element.XM}</td>
+                                <td>{element.XR}</td>
                             </tr>)
                         })}
                     </tbody>
@@ -36,9 +37,7 @@ const FalseMethod3 =()=>{
            
         );
     }
-
-    const error =(xold, xnew)=> Math.abs((xnew-xold)/xnew)*100;
-   
+    const error = (xold,xnew) => Math.abs((xnew-xold)/xnew) * 100;
     const CalFalseMethod = (xl, xr) => {
         var xm,fXm,fXr,fXl,ea,scope;
         var iter = 0;
@@ -72,9 +71,9 @@ const FalseMethod3 =()=>{
                 ea = error(xr, xm);
                 obj = {
                     iteration:iter,
-                    Xl:xl,
-                    Xm:xm,
-                    Xr:xr
+                    XL:xl,
+                    XM:xm,
+                    XR:xr
                 }
                 data.push(obj)
                 xr = xm;
@@ -84,85 +83,76 @@ const FalseMethod3 =()=>{
                 ea = error(xl, xm);
                 obj = {
                     iteration:iter,
-                    Xl:xl,
-                    Xm:xm,
-                    Xr:xr
+                    XL:xl,
+                    XM:xm,
+                    XR:xr
                 }
                 data.push(obj)
                 xl = xm;
             }
         }while(ea>e && iter<MAX)
-        setX(xm)
+        SetX(xm)
     }
+    const data = [];
+    const [ValueIter,SetValueIter] = useState([]);
+    const [ValueXL,SetValueXL] = useState([]);
+    const [ValueXR,SetValueXR] = useState([]);
+    const [ValueXM,SetValueXM] = useState([]);
 
-    const data =[];
-    const [valueIter, setValueIter] = useState([]);
-    const [valueXl, setValueXl] = useState([]);
-    const [valueXm, setValueXm] = useState([]);
-    const [valueXr, setValueXr] = useState([]);
-     
-   
-    const [html, setHtml] = useState(null);
-    const [Equation,setEquation] = useState("(x^4)-13")
-    const [X,setX] = useState(0)
-    const [XL,setXL] = useState(0)
-    const [XR,setXR] = useState(0)
-
-    const inputEquation = (event) =>{
-        console.log(event.target.value)
-        setEquation(event.target.value)
+    const [html,SetHtml] = useState(null);
+    const [Equation,SetEquation] = useState("(x^4)-13")
+    const [X,SetX] = useState(0)
+    const [XL,SetXL] = useState(0)
+    const [XR,SetXR] = useState(0)
+    const inputEquation = (event) => {
+        console.log(event.target.value);
+        SetEquation(event.target.value);
     }
-
-    const inputXL = (event) =>{
-        console.log(event.target.value)
-        setXL(event.target.value)
+    const inputXL = (event) => {
+        console.log(event.target.value);
+        SetXL(event.target.value);
     }
-
-    const inputXR = (event) =>{
-        console.log(event.target.value)
-        setXR(event.target.value)
+    const inputXR = (event) => {
+        console.log(event.target.value);
+        SetXR(event.target.value);
     }
-
-    const calculateRoot = () =>{
-        const xlnum = parseFloat(XL)
-        const xrnum = parseFloat(XR)
-        CalFalseMethod(xlnum,xrnum);
-     
-        setHtml(print());
-           
-        console.log(valueIter)
-        console.log(valueXl)
+    const calculateRoot= () => {
+        const xlnum = parseFloat(XL);
+        const xrnum = parseFloat(XR);
+        CalFalseMethod(xlnum, xrnum);
+        SetHtml(print());
     }
-
+  
     return (
-            <Container>
-            <Row className="justify-content-center">
+    <div>
+        <Row>
             <div md="auto" className="text-center mb-4">
-                <h1>False Position Methods</h1>
+                <h1 className="justify-content-center">False Position Method</h1>
             </div>
-         </Row>
-                <Form >
-                    <Form.Group className="mb-3">
-                    <Form.Label>Input f(x)</Form.Label>
-                        <input type="text" id="equation" value={Equation} onChange={inputEquation} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
-                        <Form.Label>Input XL</Form.Label>
-                        <input type="number" id="XL" onChange={inputXL} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
-                        <Form.Label>Input XR</Form.Label>
-                        <input type="number" id="XR" onChange={inputXR} style={{width:"20%", margin:"0 auto"}} className="form-control"></input>
-                    </Form.Group>
-                    <Button variant="dark" onClick={calculateRoot}>
-                        Calculate
-                    </Button>
-                </Form>
-                <br></br>
-                <h5>Answer = {X.toPrecision(7)}</h5>
-                <Container>
-                {html}
-                </Container>
-               
-            </Container>
-           
-    )
+        </Row>
+        <Form>
+            <FormGroup className='mb-3'>
+                <FormLabel> Input f(x) </FormLabel>
+                <input type="text" id="equation" value={Equation} style={{width: "20%", margin: "0 auto" }} onChange={inputEquation} className="form-control"></input>
+                <FormLabel> input XL </FormLabel>
+                <input type="number" id="XL" style={{width: "20%", margin: "0 auto" }} onChange={inputXL} className="form-control"></input>
+                <FormLabel> input XR </FormLabel>
+                <input type="number" id="XR" style={{width: "20%", margin: "0 auto" }} onChange={inputXR} className="form-control"></input>
+            </FormGroup>
+            <Button variant='dark' onClick={calculateRoot}>
+                Calculate
+            </Button>
+        
+        </Form>
+        <h5>Answer = {X.toPrecision(7)}</h5>
+        <div>{html}</div>
+
+
+
+
+        
+    </div>
+  )
 }
 
 export default FalseMethod3
