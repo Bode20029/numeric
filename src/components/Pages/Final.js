@@ -38,26 +38,70 @@ const Final = () => {
     );
   };
 
+  
+  
   const graph = () => {
+    // Extract X and Y values from the data array
+    const xValues = data.map((point) => point.XL);
+    const yValues = data.map((point) => point.XR);
+
+    // Calculate the linear regression line
+    const n = xValues.length;
+    let xSum = 0;
+    let ySum = 0;
+    let xySum = 0;
+    let xSquaredSum = 0;
+    for (let i = 0; i < n; i++) {
+      xSum += xValues[i];
+      ySum += yValues[i];
+      xySum += xValues[i] * yValues[i];
+      xSquaredSum += xValues[i] ** 2;
+    }
+    const slope =
+      (n * xySum - xSum * ySum) / (n * xSquaredSum - xSum ** 2);
+    const intercept = (ySum - slope * xSum) / n;
+    const regressionLine = xValues.map((x) => ({
+      x,
+      y: slope * x + intercept,
+    }));
+
+    // Create the chart data
     const options = {
-      scales: {
-        y: {
-          beginAtZero: true,
+        scales: {
+          y: {
+            ticks: {
+              callback: function (value) {
+                return value.toLocaleString();
+              },
+              stepSize: 5, // Add this line to set the tick interval to 5
+            },
+          },
         },
-      },
-    };
+      };
     const dataset1 = {
-        datasets: [
-          {
-            label: 'Function Values',
-            data: data.map((point) => ({ x: point.XL, y: point.XR })),
-            backgroundColor: 'rgba(255, 99, 132, 1)',
-            pointRadius: 5
-          }
-        ]
+      label: "Function Values",
+      data: data.map((point) => ({ x: point.XL, y: point.XR })),
+      backgroundColor: "rgba(255, 99, 132, 1)",
+      pointRadius: 5,
     };
-    return <Scatter options={options} data={dataset1} />;
-}
+    const dataset2 = {
+      label: "Linear Regression",
+      data: regressionLine,
+      borderColor: "rgba(54, 162, 235, 1)",
+      borderWidth: 2,
+      fill: false,
+      width: 500,
+      heigh: 300,
+      pointRadius: 0,
+      type: "line", //
+        };
+        const chartData = {
+          datasets: [dataset1, dataset2],
+        };
+      
+        // Render the chart
+        return <Scatter options={options} data={chartData} />;
+      };
   const print = (xl, xr) => {
     let fx;
     let iter = xl;
@@ -78,7 +122,7 @@ const Final = () => {
   const [valueXstart, setValueXstart] = useState([]);
   const [valueXstop, setValueXstop] = useState([]);
   const [screen, setScreen] = useState();
-  const [Equation, setEquation] = useState("(x^4)-13");
+  const [Equation, setEquation] = useState("a+bx");
   const [XL, setXL] = useState(0);
   const [XR, setXR] = useState(0);
 

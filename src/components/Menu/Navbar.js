@@ -103,7 +103,7 @@ function BasicExample() {
             <NavDropdown.Item href="/FalseMethod3">False Positionทำเพิ่ม</NavDropdown.Item>
             <NavDropdown.Item href="/Newton-raphson">Newton raphson</NavDropdown.Item>
             <NavDropdown.Item href="/Final">Finals</NavDropdown.Item>
-
+            <NavDropdown.Item href="/Linear">Linear</NavDropdown.Item>
             
             
             <NavDropdown.Item href="/Taylor">Taylor_series </NavDropdown.Item>

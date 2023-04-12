@@ -8,6 +8,7 @@ import { BrowserRouter, Route,Routes } from 'react-router-dom';
 import Navbar from "./components/Menu/Navbar"
 import Home from "./components/Home"
 import Final from "./components/Pages/Final"
+import Linear from "./components/Pages/Linear"
 
 function App() {
   return (
@@ -24,6 +25,7 @@ function App() {
       <Route path="/FalseMethod3" element={<FalseMethod3/>}></Route>
       <Route path="/Newton-Raphson" element={<Newton_raphson/>}></Route>
       <Route path="/Final" element={<Final/>}></Route>
+      <Route path="/Linear" element={<Linear/>}></Route>
       <Route path="/Taylor" element={<Taylor/>}></Route>
     </Routes>
       
