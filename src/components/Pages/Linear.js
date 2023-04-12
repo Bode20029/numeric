@@ -1,6 +1,6 @@
 import React from 'react'
 import { useState } from 'react';
-import { Form,FormLabel,FormGroup,Button } from 'react-bootstrap';
+import { Form,FormLabel,FormGroup,Button, Row, Col } from 'react-bootstrap';
 
 const Linear = () => {
     const [n, setN] = useState(0);
@@ -15,8 +15,8 @@ const Linear = () => {
         const b = [];
         
         for(let i=0; i<n; i++){
-            a.push(<input id={`a${i}`} placeholder={`a${i}`} onChange={(e) => setInputA({...inputA, [i]: e.target.value})}></input>)
-            b.push(<input id={`b${i}`} placeholder={`b${i}`} onChange={(e) => setInputB({...inputB, [i]: e.target.value})}></input>)
+            a.push(<Row ><Col><input style={{width:"100px"}} id={`a${i}`} placeholder={`a${i}`} onChange={(e) => setInputA({...inputA, [i]: e.target.value})}></input></Col></Row>)
+            b.push(<Row><Col><input style={{width:"100px"}} id={`b${i}`} placeholder={`b${i}`} onChange={(e) => setInputB({...inputB, [i]: e.target.value})}></input></Col></Row>)
         }
         
         return (
