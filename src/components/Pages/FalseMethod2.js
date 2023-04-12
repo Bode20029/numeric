@@ -174,6 +174,7 @@ const FalseMethod2 = () => {
             
             <FormControl type="number" style={input} onChange={inputXR} /> 
             </Form.Group>
+            <br></br>
             <Form.Group>
                 <Button type="submit" style={myStyle} onClick={calculate}>Calculate</Button>
                 
