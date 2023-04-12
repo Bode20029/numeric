@@ -15,13 +15,13 @@ const Linear = () => {
         const b = [];
         
         for(let i=0; i<n; i++){
-            a.push(<Row ><Col><input style={{width:"100px"}} id={`a${i}`} placeholder={`a${i}`} onChange={(e) => setInputA({...inputA, [i]: e.target.value})}></input></Col></Row>)
-            b.push(<Row><Col><input style={{width:"100px"}} id={`b${i}`} placeholder={`b${i}`} onChange={(e) => setInputB({...inputB, [i]: e.target.value})}></input></Col></Row>)
+            a.push(<Row ><Col><input style={{width:"100px"}} id={`a${i}`} placeholder={`x${i}`} onChange={(e) => setInputA({...inputA, [i]: e.target.value})}></input></Col></Row>)
+            b.push(<Row><Col><input style={{width:"100px"}} id={`b${i}`} placeholder={`fx${i}`} onChange={(e) => setInputB({...inputB, [i]: e.target.value})}></input></Col></Row>)
         }
         
         return (
             <div>
-                {a}
+                {a}<br></br><br></br>
                 {b}
             </div>
         );
