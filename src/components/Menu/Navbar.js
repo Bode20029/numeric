@@ -102,6 +102,7 @@ function BasicExample() {
             <NavDropdown.Item href="/FalseMethod2">False Positionเฉพาะกิจ</NavDropdown.Item>
             <NavDropdown.Item href="/FalseMethod3">False Positionทำเพิ่ม</NavDropdown.Item>
             <NavDropdown.Item href="/Newton-raphson">Newton raphson</NavDropdown.Item>
+            <NavDropdown.Item href="/Final">Finals</NavDropdown.Item>
 
             
             
